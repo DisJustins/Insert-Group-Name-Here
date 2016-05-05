@@ -1,0 +1,351 @@
+# Insert-Group-Name-Here
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * Created by Justin Chan, Truc Pham, Joseph Manasseh, Nandu Rami on 5/4/2016.
+ */
+public class groupproject {
+
+              // Assignments:
+              // 1-6 : Justin
+              // 7-13 : Joseph
+              // 14-20: Truc
+              // 21-26: Nandu
+
+
+    public static void main(String arg[]) {
+
+        System.out.println("Enter the store name");         // This confirms the store name
+        Scanner sc = new Scanner(System.in);                // 1) Scanner Class
+        String storeName = sc.nextLine();
+            Showmystore (storeName);
+        }
+    public static void Showmystore(String myStore){
+        switch (myStore){                                   // 3) Switch Statement
+            case "Store 147":
+
+                System.out.println("This is a great clothing store!");
+                break;
+            case "Hollister":
+                System.out.println("Hollister's okay but Store 147 is better.");
+                break;
+            default:
+                System.out.println("Invalid store");        // 26) Println
+
+        }
+
+    }
+}
+
+class ArrayClass{                                   // 12) Add multiple Class
+
+    public static void main(String[] args)                      // 11) Array
+    {
+        System.out.println("Enter sales for the week.");
+        final int SALES = 8;                                    //2) Constant
+        int[] sales = new int[SALES];
+        int sum;
+        Scanner scan = new Scanner (System.in);
+        for (int i=1; i<sales.length; i++)                      // 4) Conditional Operator
+        {
+            System.out.print("Enter sales for Day " + i + ": ");
+            sales[i] = scan.nextInt();
+        }
+        System.out.println("\n Sales for 7 days");
+        System.out.println("--------------------");
+        sum = 0;
+        for (int i=1; i<sales.length; i++)
+        {
+            System.out.println("Day " + i + " Sales " + sales[i]);
+            sum += sales[i];
+        }
+        System.out.println("\nTotal sales: " + sum);
+
+        if (sum > 100) {
+            System.out.println("Sweet, we're not going bankrupt!");      // 5) Logical Operator
+        }
+    }
+
+
+}
+
+class LoopClass{
+    public static void main(String[] args) {        // 8) Loop
+        double week1;
+        double week2;
+        double week3;
+        String answer = "yes";
+        Scanner sc = new Scanner(System.in);
+        Scanner nsc = new Scanner(System.in);
+
+        while (answer.equals("yes"))
+        {
+            System.out.print("Enter week 1 sales : ");
+            week1 = nsc.nextDouble();
+            System.out.print("Enter week 2 sales : ");
+            week2 = nsc.nextDouble();
+            System.out.print("Enter week 3 sales : ");
+            week3 = nsc.nextDouble();
+
+            System.out.println("The average sales is ");
+            System.out.println((week1 + week2 + week3) / 3.0);
+            System.out.println("Would you like to average another set of sales?");
+            answer = sc.nextLine();
+        }
+        System.out.print("Press Q to quit the program.");
+        sc.next();
+    }
+}
+
+
+class customerID{
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        System.out.println("What is your first name?");
+        String firstname = input.nextLine();
+        System.out.println("What is your last name?");
+        String lastname = input.nextLine();
+        Random number = new Random();                       // 22) Random
+        int stuff = number.nextInt(90) + 10;
+        char a = firstname.charAt(firstname.length() - 1);
+        char first = Character.toUpperCase(a);
+        String last = lastname.toLowerCase();
+        String b = last.substring(0,3);
+        System.out.println("Your customer ID will be " + first + stuff + b);
+    }
+}
+
+class projection{
+    public void subtraction (int totalsales, int projectedsales){
+        int deficit = projectedsales - totalsales;
+        System.out.println("This month, we have a deficit of " + deficit);  //17) Inheritance
+    }
+    public void failure(int totalsales, int projectedsales){            // 21) Exception Handling
+        int why = totalsales/projectedsales;
+        ArithmeticException exception = new ArithmeticException();
+        throw exception;
+    }
+}
+class proj extends projection{           // 13) Extend another class
+    public void division(int deficit, int week){
+        int sales = deficit/week;
+        System.out.println("We need to increase our sales by " + sales + " per week");
+    }
+    public static void main(String[] args){
+        int a = 500000;                          //2) Variable
+        int b = 750000;
+        int c = 0;
+        proj demo = new proj();
+        demo.subtraction(a,b);
+        demo.division(b-a,4);
+        try {
+            demo.failure(a,c);
+        } catch (ArithmeticException except){
+            System.out.println("Cannot divide by zero!");
+        }
+    }
+}
+class Encap{                         // 20) Encapsulation
+                   // wrapping the data (variables) and code acting on the data (methods) together as as single unit.
+    private String name;
+    private String idNum;
+    private int age;
+
+    public int getAge(){
+        return age;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getIdNum(){
+        return idNum;
+    }
+
+    public void setAge( int newAge){
+        age = newAge;
+    }
+
+    public void setName(String newName){
+        name = newName;
+    }
+
+    public void setIdNum( String newId){
+        idNum = newId;
+    }
+}
+class RunEncap{
+
+    public static void main(String args[]){
+        Encap encap = new Encap();
+        encap.setName("Barry Allen");
+        encap.setAge(24);
+        encap.setIdNum("5301ms");
+
+        System.out.print("Name : " + encap.getName() + " Age : " + encap.getAge() + " Id Number : " + encap.getIdNum());
+    }
+}
+
+class Constructor {                             // 15) Constructor
+    String name;                                // used to set initial values for field variables
+    Constructor() {
+        System.out.println("Constructor method called.");
+    }
+    Constructor(String t) {
+        name = t;
+    }
+    public static void main(String[] args) {
+        Constructor cpp  = new Constructor();
+        Constructor java = new Constructor("Store 147");
+        cpp.setName("AKA Best Clothing Store");
+        java.getName();
+        cpp.getName();
+    }
+    void setName(String t) {
+        name = t;
+    }
+    void getName() {
+        System.out.println("Store name: " + name);
+    }
+}
+class soldPairs
+{
+    private int soldPairs;                  // 25) Modifier
+    Scanner in = new Scanner(System.in);
+    public void show()
+    {
+        System.out.println("How many pairs were sold: ");
+        soldPairs = in.nextInt();
+        System.out.println(soldPairs +" Pairs sold ");
+    }
+}
+class sp
+{
+    public static void main(String args[])
+    {
+        soldPairs obj= new soldPairs();
+        obj.show();
+    }
+}
+
+class Team {
+    public static void main(String[] args) {
+        String pink = "At our store, we make you classy! Maybe?";
+        System.out.println(pink.substring(0, 33));                  // 6) String Class Method
+        int y = 10;
+        Scanner blue = new Scanner(System.in);
+        System.out.println("How many shirts would you like to buy?");   // 7) Math Class Method
+        int x = blue.nextInt();
+        int m = multiplication(x, y);                               //// 14) Create an Object
+        System.out.println("Your current total cost is " + m);
+        Scanner violet = new Scanner(System.in);
+        System.out.println("Would you like to add a pair of shorts for $5? yes or no?");
+        String red = violet.nextLine();
+        int z = 5;
+        if (red.equals("yes")) {
+            System.out.println("Your total is now " + addition(m, z));
+        } else {
+            System.out.println("Proceed to check out.");
+        }
+        System.out.println("Are you a first time customer?");
+        String orange = violet.nextLine();
+        int p = addition(m, z);
+        int q = 4;
+        if (orange.equals("yes")) {
+            System.out.println("Your total is " + subtraction(p, q));
+        } else {
+            System.out.println("Your total is " + addition(x, z));
+        }
+        System.out.println(money(10000));
+        System.out.println(money("ten thousand"));
+    }
+    public static int subtraction(int p, int q) {               // 5) Arithmetical operators
+        return p - q;
+    }
+    public static int addition(int m, int z) {                  // 9) Method Passing arguments
+        return (m + z);                                         // 9) Return value
+    }
+    public static int multiplication(int x, int y) {
+        return x * y;
+    }
+    public static String money(int num) {                       //10 Method Overload
+        return ("We made " + num + " this week");
+    }
+    public static String money(String num) {                // 23) Static variables and static methods
+        return ("We made " + num + " this week");
+    }
+}
+
+class clearance{                // 16) Super Keyword
+    int price=8;
+}
+class ShirtPrice extends clearance{
+    int price=15;
+    void display(){
+        System.out.println( super.price);
+    }
+    public static void main(String args[]){
+        ShirtPrice b=new ShirtPrice();
+        b.display();
+    }
+}
+
+class Clothes{                                  // 18) Polymorphism
+    void on(){System.out.println("Buying");}    // 19) Inheritance
+}
+class Shirt extends Clothes{
+    void on(){System.out.println("Buying shirt");}
+}
+class shortSleeve extends Shirt {
+    void on() {System.out.println("Buying short sleeve shirt");}
+}
+class $15 extends shortSleeve{
+    void on() {System.out.println("Buying short sleeve shirt for $15");}
+    public static void main (String args[]){
+        Clothes a1,a2,a3,a4;
+        a1=new Clothes();
+        a2=new Shirt();
+        a3=new shortSleeve();
+        a4=new $15();
+        a1.on();
+        a2.on();
+        a3.on();
+        a4.on();
+    }
+}
+
+class Customer1{        // 24) Using this keyword
+    int id;
+    String name;
+
+    Customer1(int id,String name){
+        this.id = id;
+        this.name = name;
+    }
+    void display(){System.out.println(id+" "+name);}
+    public static void main(String args[]){
+        Customer1 s1 = new Customer1(521,"Wally");
+        Customer1 s2 = new Customer1(621,"Bart");
+        s1.display();
+        s2.display();
+    }
+}
+
+class Abstraction{                              // 17)Abstraction
+                                                //order to use abstract method you need to override that method in Subclass.
+    public static void main(String args[]){
+        Inventory test = new Pants();
+        test.run();
+    }
+}
+abstract  class Inventory {
+    public abstract void run();
+}
+class Pants extends Inventory {
+    public void run() {
+        System.out.println("Description of Clothing Item");
+    }
+}
+
